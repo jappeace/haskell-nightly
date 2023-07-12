@@ -1,4 +1,4 @@
-name: cabal CI
+name: GHC Nightly Cron
 
 on:
 
