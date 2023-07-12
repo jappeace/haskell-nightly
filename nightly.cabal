@@ -93,7 +93,7 @@ executable nightly
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base < 5.0.0.0
+        base < 5.0.0.0,
         nightly
 
     -- Directories containing source files.
@@ -126,5 +126,5 @@ test-suite nightly-test
 
     -- Test dependencies.
     build-depends:
-        base < 5.0.0.0
+        base < 5.0.0.0,
         nightly
