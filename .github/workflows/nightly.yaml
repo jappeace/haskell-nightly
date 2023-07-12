@@ -3,7 +3,7 @@ name: cabal CI
 on:
 
   # pull_request: # comment out to have this run on PR's
-  # runs daily on Thursday at 8:00
+  # runs daily at 8:00
   schedule:
            # ┌───────────── minute (0 - 59)
            # │ ┌───────────── hour (0 - 23)
@@ -18,6 +18,9 @@ on:
       # 8 hour maybe night for you depending on your timezone.
       # change to another hour if it's not night and you're bothered by it.
       # but it'll be night somewhere, on mars for example.
+      # actually that'd depend on your mars location tz.
+      # which is determined by whatever political marsian faction you've
+      # decided to subjugate yourself to.
 jobs:
   build:
 
