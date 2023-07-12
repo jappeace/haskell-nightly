@@ -2,7 +2,7 @@ name: cabal CI
 
 on:
 
-  pull_request:
+  # pull_request: # comment out to have this run on PR's
   # runs daily on Thursday at 8:00
   schedule:
            # ┌───────────── minute (0 - 59)
