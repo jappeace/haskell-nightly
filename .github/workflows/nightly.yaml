@@ -15,6 +15,9 @@ on:
            # │ │ │ │ │
            # * * * * *
     - cron: '0 8 * * *' # run daily  at 8 hour, https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+      # 8 hour maybe night for you depending on your timezone.
+      # change to another hour if it's not night and you're bothered by it.
+      # but it'll be night somewhere, on mars for example.
 jobs:
   build:
 
