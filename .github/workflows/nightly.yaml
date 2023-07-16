@@ -50,7 +50,10 @@ jobs:
       if: ${{ failure() }}
       env:
         # for the token get it at https://github.com/settings/tokens
+        # you need the public_repo permission only
         # then in your repository settings,
-        # you need to add it with name GITHUB_TOKEN
+        # settings -> secrets and variables -> actions
+        # new repository secret
+        # you need to add it with name ISSUE_TOKEN
         # and the token you just made
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}       
+        GITHUB_TOKEN: ${{ secrets.ISSUE_TOKEN }}       
