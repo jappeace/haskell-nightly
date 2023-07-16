@@ -41,13 +41,16 @@ jobs:
     - name: cabal update
       run: |
           cabal update
-    - name: cabal build
+    - name: cabal build and test
       run: |
           cabal build all
-    - name: cabal test
-      run: |
           cabal test all
-    - uses: JasonEtco/create-an-issue@v2
-      if: failure()
+    - name : create issue 
+      uses: JasonEtco/create-an-issue@v2
+      if: ${{ failure() }}
       env:
+        # for the token get it at https://github.com/settings/tokens
+        # then in your repository settings,
+        # you need to add it with name GITHUB_TOKEN
+        # and the token you just made
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}       
