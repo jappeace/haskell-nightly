@@ -41,10 +41,25 @@ jobs:
     - name: cabal update
       run: |
           cabal update
-    - name: cabal build
+    - name: cabal build and test
       run: |
           cabal build all
-    - name: cabal test
-      run: |
           cabal test all
-        
+    - name : create issue 
+      uses: dacbd/create-issue-action@v1
+      if: ${{ failure() }}
+      with:
+        # for the token get it at https://github.com/settings/tokens
+        # you need the public_repo permission only
+        # then in your repository settings,
+        # settings -> secrets and variables -> actions
+        # new repository secret
+        # you need to add it with name ISSUE_TOKEN
+        # and the token you just made
+        token: ${{ secrets.ISSUE_TOKEN }}       
+        title: Nightly failed ${{ runner.os }}
+        body: |
+          The nightly build failed.
+          Check the actions for details.
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
