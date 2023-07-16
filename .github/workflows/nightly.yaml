@@ -2,7 +2,7 @@ name: GHC Nightly Cron
 
 on:
 
-  # pull_request: # comment out to have this run on PR's
+  pull_request: # comment out to have this run on PR's
   # runs daily at 8:00
   schedule:
            # ┌───────────── minute (0 - 59)
@@ -47,4 +47,7 @@ jobs:
     - name: cabal test
       run: |
           cabal test all
-        
+    - uses: JasonEtco/create-an-issue@v2
+      if: failure()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}       
