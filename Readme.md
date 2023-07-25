@@ -25,10 +25,12 @@ through one's GitHub action allowance fast.
 Copy over the file in `.github/workflows/nightly.yaml`
 into your project.
 
-For the token, get it at https://github.com/settings/tokens.
-You only need the public_repo permission.
+For the token, get it at https://github.com/settings/tokens
+You only need the `public_repo` permission.
 I'd set it to have infinite expiry so you don't end
 up with silent failures.
+Note that only the "legacy" token supports infinite
+expiry for some reason.
 Copy this token which you'll need in the next step.
 
 In your repository settings,
