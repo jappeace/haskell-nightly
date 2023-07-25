@@ -22,7 +22,7 @@ through one's GitHub action allowance fast.
 
 ## Usage
 
-Copy over the file in .github/workflows/nightly.yaml
+Copy over the file in `.github/workflows/nightly.yaml`
 into your project.
 
 For the token, get it at https://github.com/settings/tokens.
