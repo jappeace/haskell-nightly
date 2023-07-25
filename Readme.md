@@ -3,7 +3,8 @@ With ghcup adding support for [nightly GHC builds](https://github.com/haskell/gh
 it's now possible to test your project with nightly GHC releases.
 This allows for detecting stability issues before a stable release happens.
 
-This is an example GitHub action of how to use nightly GHC builds
+This is an example [GitHub action](https://github.com/features/actions)
+of how to use nightly GHC builds
 with [ghcup](https://www.haskell.org/ghcup/).
 It's set up as a cron job,
 which builds against the latest GHC-nightly release.
