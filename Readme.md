@@ -19,9 +19,7 @@ If anyone knows how to solve that, please open an issue!
 Note that I set it to once a week; otherwise, it'll burn
 through one's GitHub action allowance fast.
 
-
 ## Usage
-
 Copy over the file in `.github/workflows/nightly.yaml`
 into your project.
 
