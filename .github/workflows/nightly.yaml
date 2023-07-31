@@ -1,7 +1,7 @@
 name: GHC Nightly Cron
 
 on:
-  # pull_request: # comment out to have this run on PR's
+  pull_request: # comment out to have this run on PR's
   # runs daily at 8:00
   schedule:
            # ┌───────────── minute (0 - 59)
@@ -37,6 +37,7 @@ jobs:
           ghcup --url-source https://ghc.gitlab.haskell.org/ghcup-metadata/ghcup-nightlies-0.0.7.yaml set ghc latest-nightly
     - name: cabal update
       run: |
+          curl https://ghc.gitlab.haskell.org/head.hackage/cabal.project >> cabal.project.local
           cabal update
     - name: cabal build and test
       run: |
