@@ -13,8 +13,8 @@ If a nightly build fails, an issue is automatically created
 with a link to the failed job.
 Currently, this shows up in recent activity,
 but ideally, it would also show up as a notification.
-It doesn't do that because it thinks the user made the issue.
-If anyone knows how to solve that, please open an issue!
+To do that you'd need to setup a separate [machine user](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-accounts)
+account.
 
 Note that I set it to once a week; otherwise, it'll burn
 through one's GitHub action allowance fast.
@@ -24,6 +24,8 @@ Copy over the file in `.github/workflows/nightly.yaml`
 into your project.
 
 For the token, get it at https://github.com/settings/tokens
+Preferably do this with a [machine user](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-accounts)
+account so you get notifications.
 You only need the `public_repo` permission.
 I'd set it to have infinite expiry so you don't end
 up with silent failures.
