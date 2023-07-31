@@ -1,7 +1,6 @@
 name: GHC Nightly Cron
 
 on:
-
   # pull_request: # comment out to have this run on PR's
   # runs daily at 8:00
   schedule:
@@ -43,23 +42,19 @@ jobs:
       run: |
           cabal build all
           cabal test all
-    - name : create issue 
-      uses: dacbd/create-issue-action@v1
-      if: ${{ failure() }}
-      with:
-        # for the token get it at https://github.com/settings/tokens
-        # you need the public_repo permission only
-        # I'd set it to have infinite expirery so you don't end
-        # up with silent failures.
-        # then in your repository settings,
-        # settings -> secrets and variables -> actions
-        # new repository secret.
-        # you need to add it with name ISSUE_TOKEN
-        # and the token you just made.
-        token: ${{ secrets.ISSUE_TOKEN }}       
-        title: Nightly failed ${{ runner.os }}
-        body: |
-          The nightly build failed.
-          Check the actions for details.
-          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  notify:
+    name: Notify failed build
+    needs: build
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jayqi/failed-build-issue-action@v1
+        with:
+          github-token: ${{ secrets.ISSUE_TOKEN }}
+          title-template: Nightly failed
+          body-template: |
+                The nightly build failed.
+                Check the actions for details.
+                ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
