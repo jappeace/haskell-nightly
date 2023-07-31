@@ -37,6 +37,7 @@ jobs:
           ghcup --url-source https://ghc.gitlab.haskell.org/ghcup-metadata/ghcup-nightlies-0.0.7.yaml set ghc latest-nightly
     - name: cabal update
       run: |
+          curl https://ghc.gitlab.haskell.org/head.hackage/cabal.project >> cabal.project.local
           cabal update
     - name: cabal build and test
       run: |
