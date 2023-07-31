@@ -47,11 +47,6 @@ jobs:
 
   notify:
     name: Notify failed build
-    title-template: Nightly failed { runner.os }
-    body-template: |
-          The nightly build failed.
-          Check the actions for details.
-          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     needs: tests
     if: failure() && github.event.pull_request == null
     runs-on: ubuntu-latest
@@ -59,4 +54,9 @@ jobs:
       - uses: jayqi/failed-build-issue-action@v1
         with:
           github-token: ${{ secrets.ISSUE_TOKEN }}
+          title-template: Nightly failed { runner.os }
+          body-template: |
+                The nightly build failed.
+                Check the actions for details.
+                ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
