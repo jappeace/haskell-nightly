@@ -44,13 +44,17 @@ jobs:
           cabal build all
           cabal test all
 
-    - name: Notify failed build
-      if: failure() && github.event.pull_request == null
-      uses: jayqi/failed-build-issue-action@v1
-      with:
-         github-token: ${{ secrets.ISSUE_TOKEN }}
-         title-template: Nightly failed { runner.os }
-         body-template: |
+  notify:
+    name: Notify failed build
+    needs: tests
+    if: failure() 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jayqi/failed-build-issue-action@v1
+        with:
+          github-token: ${{ secrets.ISSUE_TOKEN }}
+          title-template: Nightly failed { runner.os }
+          body-template: |
                 The nightly build failed.
                 Check the actions for details.
                 ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
