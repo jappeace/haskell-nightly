@@ -53,7 +53,7 @@ jobs:
       - uses: jayqi/failed-build-issue-action@v1
         with:
           github-token: ${{ secrets.ISSUE_TOKEN }}
-          title-template: Nightly failed { runner.os }
+          title-template: Nightly failed
           body-template: |
                 The nightly build failed.
                 Check the actions for details.
