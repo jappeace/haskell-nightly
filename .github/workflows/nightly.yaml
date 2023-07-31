@@ -43,20 +43,6 @@ jobs:
       run: |
           cabal build all
           cabal test all
-    - name : create issue 
-      uses: dacbd/create-issue-action@v1
-      if: ${{ failure() }}
-      with:
-        # for the token get it at https://github.com/settings/tokens
-        # you need the public_repo permission only
-        # I'd set it to have infinite expirery so you don't end
-        # up with silent failures.
-        # then in your repository settings,
-        # settings -> secrets and variables -> actions
-        # new repository secret.
-        # you need to add it with name ISSUE_TOKEN
-        # and the token you just made.
-        token: ${{ secrets.ISSUE_TOKEN }}       
 
   notify:
     name: Notify failed build
@@ -71,5 +57,5 @@ jobs:
     steps:
       - uses: jayqi/failed-build-issue-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ISSUE_TOKEN }}
 
