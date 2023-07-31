@@ -41,3 +41,16 @@ go to `settings -> secrets and variables -> actions`
 and click "new repository secret".
 You need to add it with the name `ISSUE_TOKEN`
 and paste in the token you just made.
+
+## Projects with Dependencies
+
+GHC prereleases often require patched versions of various package.
+The GHC team maintains a collections of patched packages for
+testing purposes, called [head.hackage](https://ghc.gitlab.haskell.org/head.hackage/).
+When testing your code with a nightly version of GHC, you may need
+to follow the instructions on the `head.hackage` page to enable it.
+
+The patches in `head.hackage` have not necessarily been reviewed
+or accepted by the package maintainers - it should only be used for
+testing prelease compilers, and please don't report patch-related bugs
+to the package maintainers.
