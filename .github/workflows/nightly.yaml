@@ -46,7 +46,7 @@ jobs:
 
   notify:
     name: Notify failed build
-    needs: tests
+    needs: build
     if: failure() && github.event.pull_request == null
     runs-on: ubuntu-latest
     steps:
