@@ -15,6 +15,9 @@ Currently, this shows up in recent activity,
 but ideally, it would also show up as a notification.
 To do that you'd need to setup a separate [machine user](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-accounts)
 account.
+This is a new personal account which you'll dedicate to CI jobs,
+like creating issues.
+I made [this one](https://github.com/jappeace-sloth) for example.
 
 Note that I set it to once a week; otherwise, it'll burn
 through one's GitHub action allowance fast.
