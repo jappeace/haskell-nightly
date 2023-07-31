@@ -2,7 +2,7 @@ name: GHC Nightly Cron
 
 on:
 
-  # pull_request: # comment out to have this run on PR's
+  pull_request: # comment out to have this run on PR's
   # runs daily at 8:00
   schedule:
            # ┌───────────── minute (0 - 59)
@@ -57,9 +57,19 @@ jobs:
         # you need to add it with name ISSUE_TOKEN
         # and the token you just made.
         token: ${{ secrets.ISSUE_TOKEN }}       
-        title: Nightly failed ${{ runner.os }}
-        body: |
+
+  notify:
+    name: Notify failed build
+    title-template: Nightly failed { runner.os }
+    body-template: |
           The nightly build failed.
           Check the actions for details.
           ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    needs: tests
+    if: failure() && github.event.pull_request == null
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jayqi/failed-build-issue-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
