@@ -1,6 +1,7 @@
 name: GHC Nightly Cron
 
 on:
+  workflow_dispatch:
   # pull_request: # comment out to have this run on PR's
   # runs daily at 8:00
   schedule:
